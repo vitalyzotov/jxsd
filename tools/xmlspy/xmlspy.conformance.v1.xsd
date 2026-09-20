@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Conformance fixture for comparing our reference renderer against XMLSpy.
+     Each construct is given a dedicated, uniquely named global element and/or
+     named complex type so that the same component can be rendered with
+     `-r <name>` and paired with the XMLSpy diagram of the same component.
+     Generate the XMLSpy side into tools/xmlspy/out/ with both schemas. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:cnf="http://example.org/xmlspy/conformance/v1/"
+           xmlns:shr="http://example.org/xmlspy/shared/v1/"
+           targetNamespace="http://example.org/xmlspy/conformance/v1/"
+           elementFormDefault="qualified">
+
+  <xs:import namespace="http://example.org/xmlspy/shared/v1/"
+             schemaLocation="xmlspy.shared.v1.xsd"/>
+
+  <xs:attributeGroup name="AuditAttrs">
+    <xs:annotation>
+      <xs:documentation>Audit trail shared by conformance types.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="createdBy" type="xs:string"/>
+    <xs:attribute name="updatedAt" type="xs:dateTime"/>
+    <xs:attribute name="revision" type="xs:int" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:group name="NameGroup">
+    <xs:annotation>
+      <xs:documentation>Reusable sequence of name parts.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="firstName" type="xs:string"/>
+      <xs:element name="lastName" type="xs:string"/>
+      <xs:element name="middleName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="MeasureType">
+    <xs:annotation>
+      <xs:documentation>A decimal with a unit attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="unit" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="BaseType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Abstract base for extension testing.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="label" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="kind" type="xs:string" use="required"/>
+    <xs:attribute name="revision" type="xs:int" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="DerivedType">
+    <xs:annotation>
+      <xs:documentation>Derived type adding an element and an attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="cnf:BaseType">
+        <xs:sequence>
+          <xs:element name="detail" type="xs:string"/>
+          <xs:element name="note" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="active" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Derived2Type">
+    <xs:annotation>
+      <xs:documentation>Second level of extension.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="cnf:DerivedType">
+        <xs:sequence>
+          <xs:element name="rank" type="xs:int" minOccurs="1" maxOccurs="3"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RestrictedType">
+    <xs:annotation>
+      <xs:documentation>A restriction of the base type.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="cnf:BaseType">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="kind" type="xs:string" use="required"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="OccurrenceType">
+    <xs:annotation>
+      <xs:documentation>A sequence exercising every occurrence range.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="requiredChild" type="xs:string"/>
+      <xs:element name="optionalChild" type="xs:string" minOccurs="0"/>
+      <xs:element name="repeatedChild" type="xs:string" maxOccurs="unbounded"/>
+      <xs:element name="finiteChild" type="xs:int" minOccurs="1" maxOccurs="3"/>
+      <xs:element name="forbiddenChild" type="xs:string" minOccurs="0" maxOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BookType">
+    <xs:annotation>
+      <xs:documentation>A book with required, optional, repeated and finite children.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="title" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The book title.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="author" type="xs:string" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>An author of the book.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tag" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="edition" type="xs:int" minOccurs="1" maxOccurs="3"/>
+      <xs:element name="size" type="cnf:MeasureType" minOccurs="0"/>
+      <xs:element name="summary" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A deliberately long summary that must wrap onto several lines inside
+            the documentation panel so the wrapping rule is exercised end to end.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="isbn" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>International standard book number.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="pages" type="xs:int" use="optional"/>
+    <xs:attributeGroup ref="cnf:AuditAttrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ChoiceType">
+    <xs:annotation>
+      <xs:documentation>A direct choice of formats.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="paper" type="xs:string"/>
+      <xs:element name="digital" type="xs:string" minOccurs="0"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="NestedSeqType">
+    <xs:annotation>
+      <xs:documentation>A sequence nested inside a sequence.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="first" type="xs:string"/>
+        <xs:element name="second" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="NestedChoiceType">
+    <xs:annotation>
+      <xs:documentation>A choice nested inside a sequence.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="alpha" type="xs:string"/>
+        <xs:element name="beta" type="xs:string" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AllType">
+    <xs:annotation>
+      <xs:documentation>A type using the all compositor.</xs:documentation>
+    </xs:annotation>
+    <xs:all>
+      <xs:element name="left" type="xs:string"/>
+      <xs:element name="right" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="GroupRefType">
+    <xs:annotation>
+      <xs:documentation>A type reusing the name group by reference.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="cnf:NameGroup"/>
+      <xs:element name="checked" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ElementRefType">
+    <xs:annotation>
+      <xs:documentation>A type reusing global elements by reference.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="cnf:SimpleText"/>
+      <xs:element ref="shr:SharedNote" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WildcardType">
+    <xs:annotation>
+      <xs:documentation>A type with an open content wildcard.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EmptyType">
+    <xs:annotation>
+      <xs:documentation>A type with no content.</xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="AddressHolderType">
+    <xs:annotation>
+      <xs:documentation>Holds a shared-namespace address.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="address" type="shr:AddressType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ExtraordinarilyLongTypeNameForTruncationTestingType">
+    <xs:annotation>
+      <xs:documentation>Forces name truncation in the reference renderer.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="extraordinarilyLongChildElementNameForTruncation" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="SimpleText" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>A simple string element.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Measure" type="cnf:MeasureType"/>
+  <xs:element name="Occurrence" type="cnf:OccurrenceType"/>
+  <xs:element name="Book" type="cnf:BookType"/>
+  <xs:element name="Choice" type="cnf:ChoiceType"/>
+  <xs:element name="NestedSeq" type="cnf:NestedSeqType"/>
+  <xs:element name="NestedChoice" type="cnf:NestedChoiceType"/>
+  <xs:element name="All" type="cnf:AllType"/>
+  <xs:element name="GroupRef" type="cnf:GroupRefType"/>
+  <xs:element name="ElementRef" type="cnf:ElementRefType"/>
+  <xs:element name="Wildcard" type="cnf:WildcardType"/>
+  <xs:element name="Empty" type="cnf:EmptyType"/>
+  <xs:element name="AddressHolder" type="cnf:AddressHolderType"/>
+  <xs:element name="Derived" type="cnf:DerivedType"/>
+  <xs:element name="Derived2" type="cnf:Derived2Type"/>
+  <xs:element name="Restricted" type="cnf:RestrictedType"/>
+
+  <xs:element name="Inline">
+    <xs:annotation>
+      <xs:documentation>Element with an inline anonymous complex type.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="inner" type="xs:string"/>
+        <xs:element name="outer" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="marker" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="LongNamed" type="cnf:ExtraordinarilyLongTypeNameForTruncationTestingType"/>
+
+</xs:schema>

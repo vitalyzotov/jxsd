@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="329" height="77">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="339" height="82"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="339" height="82"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M82 26L116 26"/>
+		<path fill="silver" d="M4 25L9 20L82 20L82 42L9 42L4 37L4 25Z"/>
+		<path fill="white" d="M0 21L5 16L78 16L78 38L5 38L0 33L0 21Z"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="53">
+				A work whose content is a
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="65">
+				nested sequence.
+		</text>
+		<rect fill="white" x="5" y="18" width="60" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="31">
+				SeriesType
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 21L5 16L77 16L77 37L5 37L0 32L0 21Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M162 26L163 26"/>
+		<path fill="silver" d="M121 25L126 20L151 20L156 25L156 36L151 41L126 41L121 36L121 25Z"/>
+		<path fill="white" d="M117 21L122 16L147 16L152 21L152 32L147 37L122 37L117 32L117 21Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M122 26L146 26"/>
+		<rect x="128" y="25" width="3" height="3"/>
+		<rect x="133" y="25" width="3" height="3"/>
+		<rect x="138" y="25" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M117 21L122 16L146 16L151 21L151 31L146 36L122 36L117 31L117 21Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M209 26L217 26"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M218 26L218 11"/>
+		<path transform="translate(0.5 0.5)" d="M218.5 26L218.5 28L218.5 28.5L217.5 28.5L217.5 28L217.5 25.5L218.5 25.5L218.5 26ZM218.5 32L218.5 34L218.5 34.5L217.5 34.5L217.5 34L217.5 31.5L218.5 31.5L218.5 32ZM218.5 38L218.5 40.5L217.5 40.5L217.5 37.5L218.5 37.5L218.5 38Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M218 10L232 10"/>
+		<path transform="translate(0.5 0.5)" d="M218 42.5L220.5 42.5L220.5 43.5L217.5 43.5L217.5 42.5L218 42.5ZM224 42.5L226.5 42.5L226.5 43.5L223.5 43.5L223.5 42.5L224 42.5ZM230 42.5L232.5 42.5L232.5 43.5L229.5 43.5L229.5 42.5L230 42.5Z"/>
+		<path fill="silver" d="M168 25L173 20L198 20L203 25L203 36L198 41L173 41L168 36L168 25Z"/>
+		<path fill="white" d="M164 21L169 16L194 16L199 21L199 32L194 37L169 37L164 32L164 21Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M169 26L193 26"/>
+		<rect x="175" y="25" width="3" height="3"/>
+		<rect x="180" y="25" width="3" height="3"/>
+		<rect x="185" y="25" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M164 21L169 16L193 16L198 21L198 31L193 36L169 36L164 31L164 21Z"/>
+		<rect fill="silver" x="237" y="4" width="55" height="21"/>
+		<rect fill="white" x="233" width="55" height="21"/>
+		<rect fill="white" x="242" y="2" width="39" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="242" y="15">
+				lib:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="258.39453" y="15">
+				first
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M235 2L240 2"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M235 4L239 4"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M235 6L239 6"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="233" width="54" height="20"/>
+		<rect fill="silver" x="237" y="37" width="72" height="21"/>
+		<rect fill="white" x="233" y="33" width="72" height="21"/>
+		<rect fill="white" x="242" y="35" width="56" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="242" y="48">
+				lib:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="258.39453" y="48">
+				second
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M235 35L240 35"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M235 37L239 37"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M235 39L239 39"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="233" y="33" width="71" height="20"/>
+		<rect x="198" y="21" width="11" height="11"/>
+		<rect fill="white" x="199" y="22" width="9" height="9"/>
+		<rect x="200" y="26" width="7" height="1"/>
+		<rect x="151" y="21" width="11" height="11"/>
+		<rect fill="white" x="152" y="22" width="9" height="9"/>
+		<rect x="153" y="26" width="7" height="1"/>
+		<rect x="72" y="21" width="11" height="11"/>
+		<rect fill="white" x="73" y="22" width="9" height="9"/>
+		<rect x="74" y="26" width="7" height="1"/>
+	</g>
+</svg>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Shared namespace for the XMLSpy conformance fixtures. Imported by
+     xmlspy.conformance.v1.xsd so that node labels exercise namespace prefixes. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:shr="http://example.org/xmlspy/shared/v1/"
+           targetNamespace="http://example.org/xmlspy/shared/v1/"
+           elementFormDefault="qualified">
+
+  <xs:complexType name="AddressType">
+    <xs:annotation>
+      <xs:documentation>A postal address in the shared namespace.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="street" type="xs:string"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="postalCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="SharedNote" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>A shared string element.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+</xs:schema>

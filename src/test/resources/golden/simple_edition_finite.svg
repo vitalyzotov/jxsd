@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="83" height="53">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="93" height="58"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="93" height="58"/>
+		<rect fill="silver" x="7" y="7" width="56" height="21"/>
+		<rect fill="white" x="3" y="3" width="56" height="21"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="3" y="3" width="55" height="20"/>
+		<rect fill="white" width="56" height="21"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M41 21L47 27L50 24"/>
+		<rect fill="white" x="9" y="2" width="40" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="9" y="15">
+				edition
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 2L7 2"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 4L6 4"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 6L6 6"/>
+		<text font-size="12" font-family="Segoe UI" x="29.859375" y="40">
+				1
+		</text>
+		<text font-size="12" font-family="Segoe UI" x="36.328125" y="40">
+				..
+		</text>
+		<text font-size="12" font-family="Segoe UI" x="41.53125" y="40">
+				3
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" width="55" height="20"/>
+	</g>
+</svg>

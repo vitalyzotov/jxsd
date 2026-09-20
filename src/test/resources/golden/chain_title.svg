@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="252" height="68">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="262" height="73"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="262" height="73"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M73 26L74 26"/>
+		<path fill="silver" d="M4 25L9 20L73 20L73 42L9 42L4 37L4 25Z"/>
+		<path fill="white" d="M0 21L5 16L69 16L69 38L5 38L0 33L0 21Z"/>
+		<rect fill="white" x="5" y="18" width="51" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="31">
+				TitleType
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 21L5 16L68 16L68 37L5 37L0 32L0 21Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M120 26L128 26"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M129 26L129 11"/>
+		<path transform="translate(0.5 0.5)" d="M129.5 26L129.5 28L129.5 28.5L128.5 28.5L128.5 28L128.5 25.5L129.5 25.5L129.5 26ZM129.5 32L129.5 34L129.5 34.5L128.5 34.5L128.5 34L128.5 31.5L129.5 31.5L129.5 32ZM129.5 38L129.5 40.5L128.5 40.5L128.5 37.5L129.5 37.5L129.5 38Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M129 10L143 10"/>
+		<path transform="translate(0.5 0.5)" d="M129 42.5L131.5 42.5L131.5 43.5L128.5 43.5L128.5 42.5L129 42.5ZM135 42.5L137.5 42.5L137.5 43.5L134.5 43.5L134.5 42.5L135 42.5ZM141 42.5L143.5 42.5L143.5 43.5L140.5 43.5L140.5 42.5L141 42.5Z"/>
+		<path fill="silver" d="M79 25L84 20L109 20L114 25L114 36L109 41L84 41L79 36L79 25Z"/>
+		<path fill="white" d="M75 21L80 16L105 16L110 21L110 32L105 37L80 37L75 32L75 21Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M80 26L104 26"/>
+		<rect x="86" y="25" width="3" height="3"/>
+		<rect x="91" y="25" width="3" height="3"/>
+		<rect x="96" y="25" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M75 21L80 16L104 16L109 21L109 31L104 36L80 36L75 31L75 21Z"/>
+		<rect fill="silver" x="148" y="4" width="55" height="21"/>
+		<rect fill="white" x="144" width="55" height="21"/>
+		<rect fill="white" x="153" y="2" width="39" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="153" y="15">
+				lib:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="169.39453" y="15">
+				text
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M146 2L151 2"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M146 4L150 4"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M146 6L150 6"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="144" width="54" height="20"/>
+		<rect fill="silver" x="148" y="37" width="84" height="21"/>
+		<rect fill="white" x="144" y="33" width="84" height="21"/>
+		<rect fill="white" x="153" y="35" width="68" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="153" y="48">
+				lib:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="169.39453" y="48">
+				language
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M146 35L151 35"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M146 37L150 37"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M146 39L150 39"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="144" y="33" width="83" height="20"/>
+		<rect x="109" y="21" width="11" height="11"/>
+		<rect fill="white" x="110" y="22" width="9" height="9"/>
+		<rect x="111" y="26" width="7" height="1"/>
+		<rect x="63" y="21" width="11" height="11"/>
+		<rect fill="white" x="64" y="22" width="9" height="9"/>
+		<rect x="65" y="26" width="7" height="1"/>
+	</g>
+</svg>

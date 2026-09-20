@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="487" height="61">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="497" height="66"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="497" height="66"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M198 10L203 10"/>
+		<path fill="silver" d="M4 9L9 4L198 4L198 26L9 26L4 21L4 9Z"/>
+		<path fill="white" d="M0 5L5 0L194 0L194 22L5 22L0 17L0 5Z"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="37">
+				Forces name truncation in
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="49">
+				the reference renderer.
+		</text>
+		<rect fill="white" x="5" y="2" width="176" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="15">
+				ExtraordinarilyLongTypeName...
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 5L5 0L193 0L193 21L5 21L0 16L0 5Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M249 10L272 10"/>
+		<path fill="silver" d="M208 9L213 4L238 4L243 9L243 20L238 25L213 25L208 20L208 9Z"/>
+		<path fill="white" d="M204 5L209 0L234 0L239 5L239 16L234 21L209 21L204 16L204 5Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M209 10L233 10"/>
+		<rect x="215" y="9" width="3" height="3"/>
+		<rect x="220" y="9" width="3" height="3"/>
+		<rect x="225" y="9" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M204 5L209 0L233 0L238 5L238 15L233 20L209 20L204 15L204 5Z"/>
+		<rect fill="silver" x="277" y="4" width="190" height="21"/>
+		<rect fill="white" x="273" width="190" height="21"/>
+		<rect fill="white" x="282" y="2" width="174" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="282" y="15">
+				cnf:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="301.67578" y="15">
+				extraordinarilyLongChildEl...
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M275 2L280 2"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M275 4L279 4"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M275 6L279 6"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="273" width="189" height="20"/>
+		<rect x="238" y="5" width="11" height="11"/>
+		<rect fill="white" x="239" y="6" width="9" height="9"/>
+		<rect x="240" y="10" width="7" height="1"/>
+		<rect x="188" y="5" width="11" height="11"/>
+		<rect fill="white" x="189" y="6" width="9" height="9"/>
+		<rect x="190" y="10" width="7" height="1"/>
+	</g>
+</svg>

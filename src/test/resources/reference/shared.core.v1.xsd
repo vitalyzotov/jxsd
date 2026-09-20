@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic imported fixture: a small foreign-namespace type used to keep
+     the schema resolver's import handling covered. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:shr="http://example.org/shared/v1/"
+           targetNamespace="http://example.org/shared/v1/"
+           elementFormDefault="qualified">
+
+  <xs:complexType name="AddressType">
+    <xs:annotation>
+      <xs:documentation>Postal address shared across schemas.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="street" type="xs:string"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="postalCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

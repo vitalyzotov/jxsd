@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="314" height="61">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="324" height="66"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="324" height="66"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M131 10L136 10"/>
+		<path fill="silver" d="M4 9L9 4L131 4L131 26L9 26L4 21L4 9Z"/>
+		<path fill="white" d="M0 5L5 0L127 0L127 22L5 22L0 17L0 5Z"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="37">
+				Holds a shared-namespace
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="49">
+				address.
+		</text>
+		<rect fill="white" x="5" y="2" width="109" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="15">
+				AddressHolderType
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 5L5 0L126 0L126 21L5 21L0 16L0 5Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M182 10L205 10"/>
+		<path fill="silver" d="M141 9L146 4L171 4L176 9L176 20L171 25L146 25L141 20L141 9Z"/>
+		<path fill="white" d="M137 5L142 0L167 0L172 5L172 16L167 21L142 21L137 16L137 5Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M142 10L166 10"/>
+		<rect x="148" y="9" width="3" height="3"/>
+		<rect x="153" y="9" width="3" height="3"/>
+		<rect x="158" y="9" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M137 5L142 0L166 0L171 5L171 15L166 20L142 20L137 15L137 5Z"/>
+		<rect fill="silver" x="210" y="4" width="84" height="21"/>
+		<rect fill="white" x="206" width="84" height="21"/>
+		<rect fill="white" x="215" y="2" width="63" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="215" y="15">
+				cnf:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="234.67578" y="15">
+				address
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="206" width="83" height="20"/>
+		<rect x="284" y="5" width="11" height="11"/>
+		<rect fill="white" x="285" y="6" width="9" height="9"/>
+		<rect x="286" y="10" width="7" height="1"/>
+		<rect x="289" y="7" width="1" height="7"/>
+		<rect x="171" y="5" width="11" height="11"/>
+		<rect fill="white" x="172" y="6" width="9" height="9"/>
+		<rect x="173" y="10" width="7" height="1"/>
+		<rect x="121" y="5" width="11" height="11"/>
+		<rect fill="white" x="122" y="6" width="9" height="9"/>
+		<rect x="123" y="10" width="7" height="1"/>
+	</g>
+</svg>

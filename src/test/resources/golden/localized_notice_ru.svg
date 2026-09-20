@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="278" height="77">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="288" height="82"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="288" height="82"/>
+		<rect fill="#FFFFC0" x="105" width="153" height="67"/>
+		<rect fill="none" stroke="gray" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="105" width="152" height="66"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M63 36L107 36"/>
+		<rect fill="silver" x="4" y="30" width="58" height="21"/>
+		<rect fill="white" y="26" width="58" height="21"/>
+		<rect fill="#FFFFC0" x="113" y="8" width="78" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="113" y="21">
+				lcl:NoticeType
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="63">
+				Русское уведомление.
+		</text>
+		<rect fill="white" x="9" y="28" width="37" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="9" y="41">
+				Notice
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" y="26" width="57" height="20"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M153 36L176 36"/>
+		<path fill="silver" d="M112 35L117 30L142 30L147 35L147 46L142 51L117 51L112 46L112 35Z"/>
+		<path fill="white" d="M108 31L113 26L138 26L143 31L143 42L138 47L113 47L108 42L108 31Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M113 36L137 36"/>
+		<rect x="119" y="35" width="3" height="3"/>
+		<rect x="124" y="35" width="3" height="3"/>
+		<rect x="129" y="35" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M108 31L113 26L137 26L142 31L142 41L137 46L113 46L108 41L108 31Z"/>
+		<rect fill="silver" x="181" y="30" width="71" height="21"/>
+		<rect fill="white" x="177" y="26" width="71" height="21"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="182" y="63">
+				Русская тема.
+		</text>
+		<rect fill="white" x="186" y="28" width="55" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="186" y="41">
+				lcl:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="200.80664" y="41">
+				subject
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M179 28L184 28"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M179 30L183 30"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M179 32L183 32"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="177" y="26" width="70" height="20"/>
+		<rect x="142" y="31" width="11" height="11"/>
+		<rect fill="white" x="143" y="32" width="9" height="9"/>
+		<rect x="144" y="36" width="7" height="1"/>
+		<rect x="52" y="31" width="11" height="11"/>
+		<rect fill="white" x="53" y="32" width="9" height="9"/>
+		<rect x="54" y="36" width="7" height="1"/>
+	</g>
+</svg>

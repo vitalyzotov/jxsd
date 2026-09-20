@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="337" height="211">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="347" height="216"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="347" height="216"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M111 98L124 98"/>
+		<path fill="silver" d="M4 97L9 92L111 92L111 114L9 114L4 109L4 97Z"/>
+		<path fill="white" d="M0 93L5 88L107 88L107 110L5 110L0 105L0 93Z"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="125">
+				A sequence exercising every
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="137">
+				occurrence range.
+		</text>
+		<rect fill="white" x="5" y="90" width="89" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="103">
+				OccurrenceType
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 93L5 88L106 88L106 109L5 109L0 104L0 93Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M170 98L178 98"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M179 98L179 11"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M179 98L179 130"/>
+		<path transform="translate(0.5 0.5)" d="M179.5 131L179.5 133L179.5 133.5L178.5 133.5L178.5 133L178.5 130.5L179.5 130.5L179.5 131ZM179.5 137L179.5 139L179.5 139.5L178.5 139.5L178.5 139L178.5 136.5L179.5 136.5L179.5 137ZM179.5 143L179.5 145L179.5 145.5L178.5 145.5L178.5 145L178.5 142.5L179.5 142.5L179.5 143ZM179.5 149L179.5 151L179.5 151.5L178.5 151.5L178.5 151L178.5 148.5L179.5 148.5L179.5 149ZM179.5 155L179.5 157L179.5 157.5L178.5 157.5L178.5 157L178.5 154.5L179.5 154.5L179.5 155ZM179.5 161L179.5 163L179.5 163.5L178.5 163.5L178.5 163L178.5 160.5L179.5 160.5L179.5 161ZM179.5 167L179.5 169L179.5 169.5L178.5 169.5L178.5 169L178.5 166.5L179.5 166.5L179.5 167ZM179.5 173L179.5 175L179.5 175.5L178.5 175.5L178.5 175L178.5 172.5L179.5 172.5L179.5 173ZM179.5 179L179.5 181.5L178.5 181.5L178.5 178.5L179.5 178.5L179.5 179Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M179 10L193 10"/>
+		<path transform="translate(0.5 0.5)" d="M179 42.5L181.5 42.5L181.5 43.5L178.5 43.5L178.5 42.5L179 42.5ZM185 42.5L187.5 42.5L187.5 43.5L184.5 43.5L184.5 42.5L185 42.5ZM191 42.5L193.5 42.5L193.5 43.5L190.5 43.5L190.5 42.5L191 42.5Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M179 76L193 76"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M179 131L193 131"/>
+		<path transform="translate(0.5 0.5)" d="M179 185.5L181.5 185.5L181.5 186.5L178.5 186.5L178.5 185.5L179 185.5ZM185 185.5L187.5 185.5L187.5 186.5L184.5 186.5L184.5 185.5L185 185.5ZM191 185.5L193.5 185.5L193.5 186.5L190.5 186.5L190.5 185.5L191 185.5Z"/>
+		<path fill="silver" d="M129 97L134 92L159 92L164 97L164 108L159 113L134 113L129 108L129 97Z"/>
+		<path fill="white" d="M125 93L130 88L155 88L160 93L160 104L155 109L130 109L125 104L125 93Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M130 98L154 98"/>
+		<rect x="136" y="97" width="3" height="3"/>
+		<rect x="141" y="97" width="3" height="3"/>
+		<rect x="146" y="97" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M125 93L130 88L154 88L159 93L159 103L154 108L130 108L125 103L125 93Z"/>
+		<rect fill="silver" x="198" y="4" width="111" height="21"/>
+		<rect fill="white" x="194" width="111" height="21"/>
+		<rect fill="white" x="203" y="2" width="95" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="203" y="15">
+				cnf:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="222.67578" y="15">
+				requiredChild
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 2L201 2"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 4L200 4"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 6L200 6"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="194" width="110" height="20"/>
+		<rect fill="silver" x="198" y="37" width="111" height="21"/>
+		<rect fill="white" x="194" y="33" width="111" height="21"/>
+		<rect fill="white" x="203" y="35" width="95" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="203" y="48">
+				cnf:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="222.67578" y="48">
+				optionalChild
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 35L201 35"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 37L200 37"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 39L200 39"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="194" y="33" width="110" height="20"/>
+		<rect fill="silver" x="201" y="73" width="114" height="21"/>
+		<rect fill="white" x="197" y="69" width="114" height="21"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="197" y="69" width="113" height="20"/>
+		<rect fill="white" x="194" y="66" width="114" height="21"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M293 87L299 93L302 90"/>
+		<rect fill="white" x="203" y="68" width="98" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="203" y="81">
+				cnf:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="222.67578" y="81">
+				repeatedChild
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 68L201 68"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 70L200 70"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 72L200 72"/>
+		<text font-size="12" font-family="Segoe UI" x="278.52539" y="106">
+				1
+		</text>
+		<text font-size="12" font-family="Segoe UI" x="284.99414" y="106">
+				..
+		</text>
+		<text font-size="12" font-family="Segoe UI" x="290.19727" y="106">
+				∞
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="194" y="66" width="113" height="20"/>
+		<rect fill="silver" x="201" y="128" width="93" height="21"/>
+		<rect fill="white" x="197" y="124" width="93" height="21"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="197" y="124" width="92" height="20"/>
+		<rect fill="white" x="194" y="121" width="93" height="21"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M272 142L278 148L281 145"/>
+		<rect fill="white" x="203" y="123" width="77" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="203" y="136">
+				cnf:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="222.67578" y="136">
+				finiteChild
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 123L201 123"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 125L200 125"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 127L200 127"/>
+		<text font-size="12" font-family="Segoe UI" x="260.85938" y="161">
+				1
+		</text>
+		<text font-size="12" font-family="Segoe UI" x="267.32812" y="161">
+				..
+		</text>
+		<text font-size="12" font-family="Segoe UI" x="272.53125" y="161">
+				3
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="194" y="121" width="92" height="20"/>
+		<rect fill="silver" x="198" y="180" width="119" height="21"/>
+		<rect fill="white" x="194" y="176" width="119" height="21"/>
+		<rect fill="white" x="203" y="178" width="103" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="203" y="191">
+				cnf:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="222.67578" y="191">
+				forbiddenChild
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 178L201 178"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 180L200 180"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M196 182L200 182"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="194" y="176" width="118" height="20"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M194 176L312 196"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M194 196L312 176"/>
+		<rect x="159" y="93" width="11" height="11"/>
+		<rect fill="white" x="160" y="94" width="9" height="9"/>
+		<rect x="161" y="98" width="7" height="1"/>
+		<rect x="101" y="93" width="11" height="11"/>
+		<rect fill="white" x="102" y="94" width="9" height="9"/>
+		<rect x="103" y="98" width="7" height="1"/>
+	</g>
+</svg>

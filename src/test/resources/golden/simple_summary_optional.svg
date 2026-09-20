@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="138" height="133">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="148" height="138"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="148" height="138"/>
+		<rect fill="silver" x="4" y="4" width="68" height="21"/>
+		<rect fill="white" width="68" height="21"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="37">
+				A short summary of the
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="49">
+				book contents that is
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="61">
+				deliberately long enough to
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="73">
+				wrap onto
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="85">
+				            several lines inside
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="97">
+				the documentation panel so
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="109">
+				that the wrapping rule is
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="121">
+				exercised end to end.
+		</text>
+		<rect fill="white" x="9" y="2" width="52" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="9" y="15">
+				summary
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 2L7 2"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 4L6 4"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 6L6 6"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" width="67" height="20"/>
+	</g>
+</svg>

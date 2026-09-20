@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "lsp": {
+    "jdtls": {
+      "command": ["jdtls"],
+      "env": {
+        "JAVA_HOME": "/usr/lib/jvm/java-25-openjdk-amd64"
+      }
+    }
+  }
+}

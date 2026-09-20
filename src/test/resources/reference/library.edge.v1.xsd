@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic edge-case fixture: components that exercise rendering and
+     schema-tree boundaries (finite/all-optional/single-repeated groups, fixed
+     occurrences, inheritance, restriction, element refs, attribute corners,
+     substitution groups and unresolved group references). -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:edge="http://example.org/edge/v1/"
+           targetNamespace="http://example.org/edge/v1/"
+           elementFormDefault="qualified">
+
+  <xs:attribute name="globalCode" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Global code attribute.</xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
+
+  <xs:attributeGroup name="InnerAttrs">
+    <xs:attribute name="inner" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="OuterAttrs">
+    <xs:attribute name="outer" type="xs:string"/>
+    <xs:attributeGroup ref="edge:InnerAttrs"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="FiniteGroupType">
+    <xs:annotation>
+      <xs:documentation>Content is a finite repeated sequence.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence maxOccurs="2">
+        <xs:element name="left" type="xs:string"/>
+        <xs:element name="right" type="xs:string"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AllOptionalType">
+    <xs:annotation>
+      <xs:documentation>Every child is optional.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alpha" type="xs:string" minOccurs="0"/>
+      <xs:element name="beta" type="xs:string" minOccurs="0"/>
+      <xs:element name="gamma" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SingleRepeatedType">
+    <xs:annotation>
+      <xs:documentation>A single repeated child.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="item" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RepeatedHolderType">
+    <xs:annotation>
+      <xs:documentation>A holder whose inline child has a single repeated child.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="holder">
+        <xs:annotation>
+          <xs:documentation>The inline holder.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" type="xs:string" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FixedOccurrenceType">
+    <xs:annotation>
+      <xs:documentation>A child with a fixed occurrence.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="pair" type="xs:string" minOccurs="2" maxOccurs="2"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="InheritBaseType">
+    <xs:annotation>
+      <xs:documentation>Base content for pure inheritance.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="baseField" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="InheritedType">
+    <xs:annotation>
+      <xs:documentation>Extends the base without adding content.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="edge:InheritBaseType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NestedWithAttrsType">
+    <xs:annotation>
+      <xs:documentation>A nested group next to attributes cannot be rendered.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="leaf" type="xs:string"/>
+      <xs:choice>
+        <xs:element name="a" type="xs:string"/>
+        <xs:element name="b" type="xs:string"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="attr" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="RestrictionBaseType">
+    <xs:annotation>
+      <xs:documentation>Base content for restriction.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="code" type="xs:string"/>
+    <xs:attribute name="note" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="RestrictedType">
+    <xs:annotation>
+      <xs:documentation>Restricts the base content and prohibits an attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="edge:RestrictionBaseType">
+        <xs:sequence>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="note" use="prohibited"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RestrictionContentBaseType">
+    <xs:annotation>
+      <xs:documentation>Base content with a droppable optional child.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="keep" type="xs:string"/>
+      <xs:element name="drop" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RestrictionContentType">
+    <xs:annotation>
+      <xs:documentation>Restriction that drops an inherited element.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="edge:RestrictionContentBaseType">
+        <xs:sequence>
+          <xs:element name="keep" type="xs:string"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="RestrictedContent" type="edge:RestrictionContentType">
+    <xs:annotation>
+      <xs:documentation>Content restricted to the kept element.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="RefTarget" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Target of an element reference.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="ElementRefType">
+    <xs:annotation>
+      <xs:documentation>Content reuses another element by reference.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="edge:RefTarget"/>
+      <xs:element name="local" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AttrCornersType">
+    <xs:annotation>
+      <xs:documentation>Attribute corner cases.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="payload" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute ref="edge:globalCode"/>
+    <xs:attribute name="inline">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="4"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="listed">
+      <xs:simpleType>
+        <xs:list itemType="xs:int"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="edge:OuterAttrs"/>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+
+  <xs:group name="AllGroup">
+    <xs:all>
+      <xs:element name="one" type="xs:string"/>
+      <xs:element name="two" type="xs:string"/>
+    </xs:all>
+  </xs:group>
+
+  <xs:complexType name="UsesAllGroupType">
+    <xs:annotation>
+      <xs:documentation>Uses a group whose particle is an all compositor.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="edge:AllGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="AbstractMessage" type="xs:string" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Abstract element with a substitution.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="ConcreteMessage" type="xs:string" substitutionGroup="edge:AbstractMessage">
+    <xs:annotation>
+      <xs:documentation>Substitutes the abstract message.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="MissingGroupType">
+    <xs:annotation>
+      <xs:documentation>References a group that does not exist.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="edge:NoSuchGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Inherited" type="edge:InheritedType">
+    <xs:annotation>
+      <xs:documentation>Element with a purely inherited type.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Escaped" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Fish &amp; chips &lt;raw&gt; "quoted"</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Blank" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>   </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+</xs:schema>

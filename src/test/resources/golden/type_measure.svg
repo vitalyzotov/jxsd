@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="208" height="69">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="218" height="74"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="218" height="74"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M87 24L100 24"/>
+		<path fill="silver" d="M4 22L9 17L97 17L97 39L9 39L4 34L4 22Z"/>
+		<path fill="white" d="M0 18L5 13L93 13L93 35L5 35L0 30L0 18Z"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="50">
+				A decimal with a unit
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="62">
+				attribute.
+		</text>
+		<rect fill="white" x="5" y="15" width="75" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="28">
+				MeasureType
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 18L5 13L92 13L92 34L5 34L0 29L0 18Z"/>
+		<path fill="white" d="M188 19L188 0L111 0L111 19L111 49L188 49L188 19Z"/>
+		<rect fill="white" x="131" y="2" width="51" height="16"/>
+		<text font-size="12" font-style="italic" font-family="Segoe UI" x="131" y="15">
+				attributes
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M188 19L188 0L111 0L111 19L111 49L188 49L188 19Z"/>
+		<rect fill="silver" x="121" y="27" width="45" height="21"/>
+		<rect fill="white" x="117" y="23" width="45" height="21"/>
+		<rect fill="white" x="126" y="25" width="29" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="126" y="38">
+				unit
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="117" y="23" width="44" height="20"/>
+		<rect x="116" y="5" width="11" height="11"/>
+		<rect fill="white" x="117" y="6" width="9" height="9"/>
+		<rect x="118" y="10" width="7" height="1"/>
+	</g>
+</svg>

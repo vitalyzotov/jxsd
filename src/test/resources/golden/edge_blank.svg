@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="71" height="38">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="81" height="43"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="81" height="43"/>
+		<rect fill="silver" x="4" y="4" width="47" height="21"/>
+		<rect fill="white" width="47" height="21"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="37">
+				
+		</text>
+		<rect fill="white" x="9" y="2" width="31" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="9" y="15">
+				Blank
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 2L7 2"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 4L6 4"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M2 6L6 6"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" width="46" height="20"/>
+	</g>
+</svg>

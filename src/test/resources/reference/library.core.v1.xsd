@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic reference fixture: abstract components chosen so that every
+     supported reference page shape is reachable (simple element, chain,
+     composite, context and nested pages), plus shapes the renderer rejects
+     (inline anonymous types, top-level groups). -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:lib="http://example.org/library/v1/"
+           xmlns:shr="http://example.org/shared/v1/"
+           targetNamespace="http://example.org/library/v1/"
+           elementFormDefault="qualified">
+
+  <xs:include schemaLocation="library.codelists.v1.xsd"/>
+  <xs:import namespace="http://example.org/shared/v1/" schemaLocation="shared.core.v1.xsd"/>
+
+  <xs:attributeGroup name="AuditAttrs">
+    <xs:annotation>
+      <xs:documentation>Audit trail shared by library types.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="createdBy" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Creator of the record.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="updatedAt" type="xs:dateTime">
+      <xs:annotation>
+        <xs:documentation>Last update timestamp.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="revision" type="xs:int" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:group name="NameGroup">
+    <xs:annotation>
+      <xs:documentation>Reusable sequence of name parts.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="firstName" type="xs:string"/>
+      <xs:element name="lastName" type="xs:string"/>
+      <xs:element name="middleName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="MeasureType">
+    <xs:annotation>
+      <xs:documentation>A decimal with a unit attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="unit" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="TitleType">
+    <xs:annotation>
+      <xs:documentation>Title of a work.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="text" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Title text.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" type="lib:CodeType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Language of the title.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PersonType">
+    <xs:annotation>
+      <xs:documentation>A person with a choice of contact details.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="firstName" type="xs:string"/>
+        <xs:element name="lastName" type="xs:string"/>
+        <xs:element name="middleName" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+      <xs:element name="address" type="shr:AddressType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Home address of the person.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="email" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Electronic contact.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="phone" type="xs:string"/>
+        <xs:element name="fax" type="xs:string" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BookType">
+    <xs:annotation>
+      <xs:documentation>A book with authors, tags and a summary.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="title" type="lib:TitleType">
+        <xs:annotation>
+          <xs:documentation>The book title.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="author" type="lib:PersonType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>An author of the book.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tag" type="lib:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="edition" type="xs:int" minOccurs="1" maxOccurs="3">
+        <xs:annotation>
+          <xs:documentation>Edition number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="size" type="lib:MeasureType" minOccurs="0"/>
+      <xs:element name="summary" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A short summary of the book contents that is deliberately long enough to wrap onto
+            several lines inside the documentation panel so that the wrapping rule is exercised end to end.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="isbn" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>International standard book number.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="pages" type="xs:int" use="optional"/>
+    <xs:attributeGroup ref="lib:AuditAttrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="AudiobookType">
+    <xs:annotation>
+      <xs:documentation>An audiobook extending the plain book.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lib:BookType">
+        <xs:sequence>
+          <xs:element name="narrator" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Reader of the audiobook.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="duration" type="lib:MeasureType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SeriesType">
+    <xs:annotation>
+      <xs:documentation>A work whose content is a nested sequence.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="first" type="xs:string"/>
+        <xs:element name="second" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ChoiceSeriesType">
+    <xs:annotation>
+      <xs:documentation>A work whose content is a nested choice.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="alpha" type="xs:string"/>
+        <xs:element name="beta" type="xs:string" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ChoiceType">
+    <xs:annotation>
+      <xs:documentation>A direct choice of formats.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="paper" type="xs:string"/>
+      <xs:element name="digital" type="xs:string" minOccurs="0"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="CatalogType">
+    <xs:annotation>
+      <xs:documentation>Catalog of works.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Catalog name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="updated" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Last update of the catalog.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="book" type="lib:BookType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A work held by the catalog.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IndexType">
+    <xs:annotation>
+      <xs:documentation>Index whose content is a nested sequence.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="term" type="xs:string"/>
+        <xs:element name="reference" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RepeatedGroupType">
+    <xs:annotation>
+      <xs:documentation>A type whose inner sequence repeats.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence maxOccurs="unbounded">
+        <xs:element name="entry" type="xs:string"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GroupRefType">
+    <xs:annotation>
+      <xs:documentation>A type reusing the name group by reference.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lib:NameGroup"/>
+      <xs:element name="checked" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WildcardType">
+    <xs:annotation>
+      <xs:documentation>A type with an open content wildcard.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AllType">
+    <xs:annotation>
+      <xs:documentation>A type using the all compositor.</xs:documentation>
+    </xs:annotation>
+    <xs:all>
+      <xs:element name="left" type="xs:string"/>
+      <xs:element name="right" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:element name="Comment" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Free comment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Note" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>A note with a single line of documentation.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Book" type="lib:BookType">
+    <xs:annotation>
+      <xs:documentation>A book entry.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Catalog" type="lib:CatalogType">
+    <xs:annotation>
+      <xs:documentation>A catalog entry.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Index" type="lib:IndexType">
+    <xs:annotation>
+      <xs:documentation>An index entry.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Select" type="lib:ChoiceType">
+    <xs:annotation>
+      <xs:documentation>A format selection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Anonymous">
+    <xs:annotation>
+      <xs:documentation>Element with an inline type, which the reference renderer rejects.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="inner" type="xs:string"/>
+        <xs:element name="outer" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

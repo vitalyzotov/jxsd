@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<FindBugsFilter>
+    <!--
+      The diagram is a mutable object graph (parent/child links, shared schema
+      registry, cached attribute lists). Defensive copies would break the
+      mutation model, so EI_EXPOSE_REP/REP2 are expected here.
+    -->
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+
+    <!-- The XmlSchema model mirrors the XSD-generated classes; some fields are
+         parsed but not consumed by the renderers. -->
+    <Match>
+        <Bug pattern="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD"/>
+    </Match>
+    <Match>
+        <Bug pattern="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD"/>
+    </Match>
+
+    <!-- SvgWriter rejects a null writer in its constructor. It is package-private
+         and has no finalizer (and, on Java 21, finalization is disabled by
+         default), so the finalizer-attack warning does not apply. -->
+    <Match>
+        <Class name="org.jxsd.rendering.SvgWriter"/>
+        <Bug pattern="CT_CONSTRUCTOR_THROW"/>
+    </Match>
+
+    <!-- SVG markup is emitted with LF (\n) so the committed golden snapshots stay
+         byte-identical on every platform; the platform newline (%n) that SpotBugs
+         suggests would change the output. -->
+    <Match>
+        <Class name="~org\.jxsd\.rendering\..*"/>
+        <Bug pattern="VA_FORMAT_STRING_USES_NEWLINE"/>
+    </Match>
+</FindBugsFilter>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="119" height="44">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="129" height="49"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="129" height="49"/>
+		<path fill="silver" d="M4 9L9 4L84 4L84 26L9 26L4 21L4 9Z"/>
+		<path fill="white" d="M0 5L5 0L80 0L80 22L5 22L0 17L0 5Z"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="37">
+				A type with no content.
+		</text>
+		<rect fill="white" x="5" y="2" width="62" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="15">
+				EmptyType
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 5L5 0L79 0L79 21L5 21L0 16L0 5Z"/>
+	</g>
+</svg>

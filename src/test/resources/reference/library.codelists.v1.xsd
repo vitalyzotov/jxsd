@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic code-list fixture: simple types reused by library.core.v1.xsd. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:lib="http://example.org/library/v1/"
+           targetNamespace="http://example.org/library/v1/"
+           elementFormDefault="qualified">
+
+  <xs:simpleType name="CodeType">
+    <xs:annotation>
+      <xs:documentation>Short alphabetic code.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RatingType">
+    <xs:annotation>
+      <xs:documentation>Rating from one to five.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="5"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="StatusType">
+    <xs:annotation>
+      <xs:documentation>Lifecycle status of a work.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="draft"/>
+      <xs:enumeration value="published"/>
+      <xs:enumeration value="archived"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

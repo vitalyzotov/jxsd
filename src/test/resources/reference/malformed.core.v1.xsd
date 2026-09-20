@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic fixture that is not well-formed on purpose, to exercise the
+     loader's parse-failure path. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.org/malformed/v1/">
+  <xs:element name="Broken" type="xs:string">
+</xs:schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic fixture with two unresolvable includes: the loader must report
+     each missing dependency on its own line. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:mm="http://example.org/missing-multiple/v1/"
+           targetNamespace="http://example.org/missing-multiple/v1/"
+           elementFormDefault="qualified">
+
+  <xs:include schemaLocation="first-missing.core.v1.xsd"/>
+  <xs:include schemaLocation="second-missing.core.v1.xsd"/>
+
+  <xs:element name="Standalone" type="xs:string"/>
+</xs:schema>

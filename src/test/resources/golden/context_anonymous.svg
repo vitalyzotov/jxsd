@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="293" height="115">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="303" height="120"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="303" height="120"/>
+		<rect fill="#FFFFC0" x="128" width="145" height="86"/>
+		<rect fill="none" stroke="gray" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="128" width="144" height="85"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M93 52L130 52"/>
+		<rect fill="silver" x="4" y="46" width="88" height="21"/>
+		<rect fill="white" y="42" width="88" height="21"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="79">
+				Element with an inline type,
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="91">
+				which the reference renderer
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="103">
+				rejects.
+		</text>
+		<rect fill="white" x="9" y="44" width="67" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="9" y="57">
+				Anonymous
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" y="42" width="87" height="20"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M176 52L184 52"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M185 52L185 37"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M185 52L185 68"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M185 36L199 36"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M185 69L199 69"/>
+		<path fill="silver" d="M135 51L140 46L165 46L170 51L170 62L165 67L140 67L135 62L135 51Z"/>
+		<path fill="white" d="M131 47L136 42L161 42L166 47L166 58L161 63L136 63L131 58L131 47Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M136 52L160 52"/>
+		<rect x="142" y="51" width="3" height="3"/>
+		<rect x="147" y="51" width="3" height="3"/>
+		<rect x="152" y="51" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M131 47L136 42L160 42L165 47L165 57L160 62L136 62L131 57L131 47Z"/>
+		<rect fill="silver" x="204" y="30" width="62" height="21"/>
+		<rect fill="white" x="200" y="26" width="62" height="21"/>
+		<rect fill="white" x="209" y="28" width="46" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="209" y="41">
+				lib:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="225.39453" y="41">
+				inner
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M202 28L207 28"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M202 30L206 30"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M202 32L206 32"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="200" y="26" width="61" height="20"/>
+		<rect fill="silver" x="204" y="63" width="63" height="21"/>
+		<rect fill="white" x="200" y="59" width="63" height="21"/>
+		<rect fill="white" x="209" y="61" width="47" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="209" y="74">
+				lib:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="225.39453" y="74">
+				outer
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M202 61L207 61"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M202 63L206 63"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M202 65L206 65"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="200" y="59" width="62" height="20"/>
+		<rect x="165" y="47" width="11" height="11"/>
+		<rect fill="white" x="166" y="48" width="9" height="9"/>
+		<rect x="167" y="52" width="7" height="1"/>
+		<rect x="82" y="47" width="11" height="11"/>
+		<rect fill="white" x="83" y="48" width="9" height="9"/>
+		<rect x="84" y="52" width="7" height="1"/>
+	</g>
+</svg>

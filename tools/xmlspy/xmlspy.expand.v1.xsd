@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Expansion conformance fixture: every page shape carrying elements that
+     expand into child nodes. Generate the XMLSpy side into tools/xmlspy/out/
+     with expansion level 1, 2 and 3 as noted in AGENTS.md. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:exp="http://example.org/xmlspy/expand/v1/"
+           targetNamespace="http://example.org/xmlspy/expand/v1/"
+           elementFormDefault="qualified">
+
+  <xs:complexType name="LeafType">
+    <xs:annotation>
+      <xs:documentation>Level-3 leaf helper.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="leafValue" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PlainLeafType">
+    <xs:annotation>
+      <xs:documentation>Another named leaf helper.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="plainValue" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FancyChildType">
+    <xs:annotation>
+      <xs:documentation>Expanded named type with attributes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="first" type="xs:string"/>
+      <xs:element name="deep" type="exp:LeafType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="code" type="xs:string" use="required"/>
+    <xs:attribute name="note" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="NestedChildType">
+    <xs:annotation>
+      <xs:documentation>Expanded named type with a nested choice.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="head" type="xs:string"/>
+      <xs:choice>
+        <xs:element name="optionA" type="xs:string"/>
+        <xs:element name="optionB" type="xs:string" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ExpandCompositeType">
+    <xs:annotation>
+      <xs:documentation>Composite root: attributes and expanding children.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="namedChild" type="exp:FancyChildType">
+        <xs:annotation>
+          <xs:documentation>Named-type child.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="anonChild" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Inline anonymous child.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="innerNamed" type="exp:PlainLeafType"/>
+            <xs:element name="innerSimple" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="nestedChild" type="exp:NestedChildType" maxOccurs="unbounded"/>
+      <xs:element name="plainChild" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ExpandChainType">
+    <xs:annotation>
+      <xs:documentation>Chain root without attributes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="namedChild" type="exp:FancyChildType"/>
+      <xs:element name="other" type="exp:LeafType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ExpandBaseType">
+    <xs:sequence>
+      <xs:element name="fromBase" type="exp:FancyChildType"/>
+    </xs:sequence>
+    <xs:attribute name="baseAttr" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="ExpandExtensionType">
+    <xs:annotation>
+      <xs:documentation>Extension root: base and derived both expand.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="exp:ExpandBaseType">
+        <xs:sequence>
+          <xs:element name="fromDerived" type="exp:LeafType"/>
+        </xs:sequence>
+        <xs:attribute name="derivedAttr" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExpandNestedType">
+    <xs:annotation>
+      <xs:documentation>Nested-group root.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="lead" type="xs:string"/>
+      <xs:sequence>
+        <xs:element name="deepChild" type="exp:FancyChildType"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="ExpandComposite" type="exp:ExpandCompositeType"/>
+  <xs:element name="ExpandChain" type="exp:ExpandChainType"/>
+  <xs:element name="ExpandExtension" type="exp:ExpandExtensionType"/>
+  <xs:element name="ExpandNested" type="exp:ExpandNestedType"/>
+
+  <xs:element name="ExpandElementRoot">
+    <xs:annotation>
+      <xs:documentation>Element-rooted context that expands.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="namedChild" type="exp:FancyChildType"/>
+        <xs:element name="plainChild" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

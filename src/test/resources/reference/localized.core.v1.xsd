@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic localization fixture: xml:lang documentation plus a
+     language-less fallback, used by the annotation and CLI language tests. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:lcl="http://example.org/localized/v1/"
+           targetNamespace="http://example.org/localized/v1/"
+           elementFormDefault="qualified">
+
+  <xs:element name="Greeting">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">English greeting.</xs:documentation>
+      <xs:documentation xml:lang="ru">Русское приветствие.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="subject" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Subject without a language.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="body" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">English body.</xs:documentation>
+            <xs:documentation xml:lang="ru">Русское тело.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="lang" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Attribute language.</xs:documentation>
+          <xs:documentation xml:lang="ru">Язык атрибута.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="NoticeType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">English notice type.</xs:documentation>
+      <xs:documentation xml:lang="ru">Русский тип уведомления.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="subject" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">English subject.</xs:documentation>
+          <xs:documentation xml:lang="ru">Русская тема.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Notice" type="lcl:NoticeType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">English notice.</xs:documentation>
+      <xs:documentation xml:lang="ru">Русское уведомление.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Sourced" type="xs:string">
+    <xs:annotation>
+      <xs:documentation source="http://example.org/doc"/>
+    </xs:annotation>
+  </xs:element>
+
+</xs:schema>

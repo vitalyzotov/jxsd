@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="344" height="91">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="354" height="96"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="354" height="96"/>
+		<rect fill="#FFFFC0" x="119" width="201" height="77"/>
+		<rect fill="none" stroke="gray" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="119" width="200" height="76"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="127" y="20">
+				edge:InheritBaseType
+		</text>
+		<text fill="gray" font-size="12" font-family="Segoe UI" x="244.26367" y="20">
+				 (extension)
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M99 38L125 38"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M126 38L126 37"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M126 38L132 38"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M178 38L186 38"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M187 38L201 38"/>
+		<path fill="silver" d="M137 37L142 32L167 32L172 37L172 48L167 53L142 53L137 48L137 37Z"/>
+		<path fill="white" d="M133 33L138 28L163 28L168 33L168 44L163 49L138 49L133 44L133 33Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M138 38L162 38"/>
+		<rect x="144" y="37" width="3" height="3"/>
+		<rect x="149" y="37" width="3" height="3"/>
+		<rect x="154" y="37" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M133 33L138 28L162 28L167 33L167 43L162 48L138 48L133 43L133 33Z"/>
+		<rect fill="silver" x="206" y="32" width="99" height="21"/>
+		<rect fill="white" x="202" y="28" width="99" height="21"/>
+		<rect fill="white" x="211" y="30" width="83" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="211" y="43">
+				edge:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="241.10547" y="43">
+				baseField
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M204 30L209 30"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M204 32L208 32"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M204 34L208 34"/>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="202" y="28" width="98" height="20"/>
+		<rect x="167" y="33" width="11" height="11"/>
+		<rect fill="white" x="168" y="34" width="9" height="9"/>
+		<rect x="169" y="38" width="7" height="1"/>
+		<path fill="silver" d="M4 37L9 32L99 32L99 54L9 54L4 49L4 37Z"/>
+		<path fill="white" d="M0 33L5 28L95 28L95 50L5 50L0 45L0 33Z"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="65">
+				Extends the base without
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="77">
+				adding content.
+		</text>
+		<rect fill="white" x="5" y="30" width="77" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="43">
+				InheritedType
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 33L5 28L94 28L94 49L5 49L0 44L0 33Z"/>
+		<rect x="89" y="33" width="11" height="11"/>
+		<rect fill="white" x="90" y="34" width="9" height="9"/>
+		<rect x="91" y="38" width="7" height="1"/>
+	</g>
+</svg>

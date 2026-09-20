@@ -1,0 +1,18 @@
+jxsd
+Copyright 2026 the jxsd authors
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product is an independent implementation of an XSD diagram renderer.
+
+Reference material
+------------------
+The rendered diagram layout follows the visual conventions of Altova XMLSpy,
+recovered from reference diagrams that are used only as a design reference.
+Altova and XMLSpy are trademarks of Altova GmbH. This project is not
+affiliated with, endorsed by, or sponsored by Altova.
+
+This is an original implementation; no third-party source files are included.
+It uses publicly available libraries under their own licenses, including
+picocli, Apache XmlSchema 2 and Apache Batik (all Apache License 2.0) and
+JUnit 5 (Eclipse Public License 2.0, test scope only).
