@@ -1,8 +1,8 @@
 # AGENTS.md
 
 Java 21 CLI that generates XSD diagrams as SVG reference pages. Output is guarded by committed
-Java SVG snapshots of the reference renderer plus structural CLI tests. There is no README/CI;
-this file is the entrypoint.
+Java SVG snapshots of the reference renderer plus structural CLI tests. The README covers usage;
+this file documents the architecture and contribution rules.
 
 ## Provenance
 
