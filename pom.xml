@@ -11,6 +11,7 @@
 
     <name>jxsd</name>
     <description>Java CLI that generates XSD diagrams (SVG/PNG)</description>
+    <url>https://github.com/vitalyzotov/jxsd</url>
 
     <licenses>
         <license>
@@ -19,6 +20,21 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/vitalyzotov/jxsd.git</connection>
+        <developerConnection>scm:git:git@github.com:vitalyzotov/jxsd.git</developerConnection>
+        <url>https://github.com/vitalyzotov/jxsd</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>vzotov</id>
+            <name>Vitaly Zotov</name>
+            <email>vitalyzotov@gmail.com</email>
+            <url>https://github.com/vitalyzotov</url>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
