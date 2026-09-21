@@ -319,9 +319,12 @@ public final class NestedPage extends SvgPage {
         AttributeBox baseAttr = baseAttributes.isEmpty() ? null
                 : new AttributeBox(writer, options, bodyDx, TITLE_HEIGHT, baseAttributes);
         int baseTop = baseAttr == null ? TITLE_HEIGHT : baseAttr.bottom() + CONTAINER_GROUP_INSET;
-        Placed base = layoutGroup(baseContent, bodyDx, baseTop);
-        int baseBottom = Math.max(base.y() + base.consumed(), baseAttr == null ? 0 : baseAttr.bottom());
-        int containerRight = Math.max(visualRight(base) + CONTAINER_PAD,
+        Placed base = baseContent == null ? null : layoutGroup(baseContent, bodyDx, baseTop);
+        int baseRight = base != null ? visualRight(base) : (baseAttr != null ? baseAttr.right() : bodyDx);
+        int baseBottom = base != null
+                ? Math.max(base.y() + base.consumed(), baseAttr == null ? 0 : baseAttr.bottom())
+                : (baseAttr == null ? TITLE_HEIGHT : baseAttr.bottom());
+        int containerRight = Math.max(baseRight + CONTAINER_PAD,
                 containerX + TITLE_INSET + titleWidth + CONTAINER_PAD);
         int containerBottom = baseBottom + CONTAINER_PAD;
 
@@ -331,14 +334,19 @@ public final class NestedPage extends SvgPage {
         Placed derived = derivedContent == null ? null : layoutGroup(derivedContent, bodyDx, derivedTop);
 
         int branchX = bodyDx - 7;
-        int baseCenter = base.center();
+        int baseCenter = base != null
+                ? base.center()
+                : (baseAttr != null ? baseAttr.center() : TITLE_HEIGHT + ROW_HEIGHT / 2);
         int connectorY = baseAttr == null ? baseCenter : (baseAttr.center() + baseCenter) / 2;
+        int spineY = base != null ? baseCenter : connectorY;
         int typeY = connectorY - 10;
 
         Bounds bounds = new Bounds();
         bounds.includeVisualRight(containerRight);
         bounds.includeHeight(containerBottom);
-        measure(base, bounds);
+        if (base != null) {
+            measure(base, bounds);
+        }
         if (derived != null) {
             measure(derived, bounds);
         }
@@ -364,24 +372,30 @@ public final class NestedPage extends SvgPage {
 
         connector.line(derivedWidth + CONNECTOR_OFFSET, connectorY, branchX - 1, connectorY);
         if (baseAttr != null) {
-            connector.line(branchX, connectorY, branchX, baseAttr.center() + 1);
+            if (base != null) {
+                connector.line(branchX, connectorY, branchX, baseAttr.center() + 1);
+            }
             connector.line(branchX, baseAttr.center(), bodyDx - 1, baseAttr.center());
         }
-        connector.line(branchX, connectorY, branchX, baseCenter - 1);
-        connector.line(branchX, baseCenter, bodyDx - 1, baseCenter);
+        if (base != null) {
+            connector.line(branchX, connectorY, branchX, baseCenter - 1);
+            connector.line(branchX, baseCenter, bodyDx - 1, baseCenter);
+        }
         if (derivedAttr != null) {
-            connector.line(branchX, baseCenter, branchX, derivedAttr.center());
+            connector.line(branchX, spineY, branchX, derivedAttr.center());
             connector.line(branchX, derivedAttr.center(), bodyDx - 1, derivedAttr.center());
         }
         if (derived != null) {
-            connector.line(branchX, baseCenter, branchX, derived.center());
+            connector.line(branchX, spineY, branchX, derived.center());
             connector.line(branchX, derived.center(), bodyDx - 1, derived.center());
         }
 
         if (baseAttr != null) {
             baseAttr.draw();
         }
-        draw(base);
+        if (base != null) {
+            draw(base);
+        }
         if (derivedAttr != null) {
             derivedAttr.draw();
         }
@@ -389,7 +403,9 @@ public final class NestedPage extends SvgPage {
             draw(derived);
             writeGroupExpandBoxes(derived);
         }
-        writeGroupExpandBoxes(base);
+        if (base != null) {
+            writeGroupExpandBoxes(base);
+        }
 
         typeNode.render(0, typeY, derivedName, derivedDocumentation);
         writeExpandBox(derivedWidth - 6, typeY + 5);

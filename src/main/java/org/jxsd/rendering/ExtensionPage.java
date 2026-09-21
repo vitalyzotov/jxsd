@@ -65,7 +65,9 @@ public final class ExtensionPage extends SvgPage {
         int bodyDy = TITLE_HEIGHT;
 
         CompositeBody body = new CompositeBody(
-                writer, options, bodyDx, bodyDy, base.style().compositor(), base.attributes(), base.children());
+                writer, options, bodyDx, bodyDy,
+                base.style() == null ? null : base.style().compositor(),
+                base.attributes(), base.children());
         CompositeBody.Bounds bodyBounds = body.bounds();
         float baseLabelWidth = metrics.advanceWidth(baseLabel, 12f, SegoeUiMetrics.FAMILY, "600", "normal");
         int titleWidth = (int) Math.ceil(baseLabelWidth
@@ -77,7 +79,15 @@ public final class ExtensionPage extends SvgPage {
         int branchX = body.branchX();
         int groupX = body.groupX();
         int groupCenter = body.groupCenter();
-        int connectorY = body.hasAttributes() ? (body.attributeCenter() + groupCenter) / 2 : groupCenter;
+        int connectorY;
+        if (!body.hasGroup()) {
+            connectorY = body.hasAttributes() ? body.attributeCenter() : body.containerCenter();
+        } else if (body.hasAttributes()) {
+            connectorY = (body.attributeCenter() + groupCenter) / 2;
+        } else {
+            connectorY = groupCenter;
+        }
+        int spineY = body.hasGroup() ? groupCenter : connectorY;
         int derivedY = connectorY - 10;
 
         AttributeBox derivedAttributeBox = derivedSide.attributes().isEmpty() ? null
@@ -107,19 +117,23 @@ public final class ExtensionPage extends SvgPage {
                 EXTENSION_SUFFIX, 12f, null, null, "gray");
 
         connector.line(derivedWidth + CONNECTOR_OFFSET, connectorY, branchX - 1, connectorY);
-        if (body.hasAttributes()) {
+        if (body.hasGroup() && body.hasAttributes()) {
             connector.line(branchX, connectorY, branchX, body.attributeCenter() + 1);
+        }
+        if (body.hasAttributes()) {
             connector.line(branchX, body.attributeCenter(), groupX - 1, body.attributeCenter());
         }
-        connector.line(branchX, connectorY, branchX, groupCenter - 1);
-        connector.line(branchX, groupCenter, groupX - 1, groupCenter);
+        if (body.hasGroup()) {
+            connector.line(branchX, connectorY, branchX, groupCenter - 1);
+            connector.line(branchX, groupCenter, groupX - 1, groupCenter);
+        }
         if (derivedAttributeBox != null) {
             int boxCenter = derivedAttributeBox.center();
-            connector.line(branchX, groupCenter, branchX, boxCenter);
+            connector.line(branchX, spineY, branchX, boxCenter);
             connector.line(branchX, boxCenter, bodyDx - 1, boxCenter);
         }
         if (derived != null) {
-            connector.line(branchX, groupCenter, branchX, derived.groupCenter());
+            connector.line(branchX, spineY, branchX, derived.groupCenter());
             connector.line(branchX, derived.groupCenter(), derived.groupX() - 1, derived.groupCenter());
         }
 

@@ -96,12 +96,15 @@ public final class PageRenderer {
 
     String renderExtensionPage(int pageNumber, DiagramNode root) {
         DiagramNode base = PageShapeResolver.extensionBase(root);
-        DiagramNode baseGroup = PageShapeResolver.contentGroups(base).getLast();
+        List<DiagramNode> baseGroups = PageShapeResolver.contentGroups(base);
+        DiagramNode baseGroup = baseGroups.isEmpty() ? null : baseGroups.getLast();
         DiagramNode derivedGroup = PageShapeResolver.lastDirectGroup(root);
-        ExtensionSide baseSide = new ExtensionSide(groupStyle(baseGroup), attributes(base),
-                elementChildren(baseGroup.children()));
+        ExtensionSide baseSide = baseGroup == null
+                ? new ExtensionSide(null, attributes(base), List.of())
+                : new ExtensionSide(groupStyle(baseGroup), attributes(base),
+                        elementChildren(baseGroup.children()));
         ExtensionSide derivedSide = derivedGroup == null
-                ? new ExtensionSide(GroupStyle.compositor(Compositor.SEQUENCE), List.of(), List.of())
+                ? new ExtensionSide(null, List.of(), List.of())
                 : new ExtensionSide(groupStyle(derivedGroup), derivedAttributes(root, base),
                         elementChildren(derivedGroup.children()));
         StringWriter writer = new StringWriter();
@@ -112,12 +115,15 @@ public final class PageRenderer {
 
     String renderNestedExtension(int pageNumber, DiagramNode root) {
         DiagramNode base = PageShapeResolver.extensionBase(root);
-        DiagramNode baseGroup = PageShapeResolver.contentGroups(base).getLast();
+        List<DiagramNode> baseGroups = PageShapeResolver.contentGroups(base);
+        NestedPage.Group baseContent = baseGroups.isEmpty()
+                ? null
+                : (NestedPage.Group) nestedNode(baseGroups.getLast());
         DiagramNode derivedGroup = PageShapeResolver.lastDirectGroup(root);
         StringWriter writer = new StringWriter();
         new NestedPage(writer, options).renderExtension(pageNumber, rootName(root), rawDocumentation(root),
                 baseTypeLabel(base),
-                attributes(base), (NestedPage.Group) nestedNode(baseGroup),
+                attributes(base), baseContent,
                 derivedAttributes(root, base),
                 derivedGroup == null ? null : (NestedPage.Group) nestedNode(derivedGroup));
         return writer.toString();

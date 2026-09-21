@@ -50,6 +50,10 @@ final class CompositeBody extends SvgPage {
     private final int[] consumed;
     private final int groupY;
 
+    /**
+     * @param groupType the content compositor, or {@code null} when the body has
+     *                  no content group (only an attribute tab)
+     */
     CompositeBody(Writer writer, RenderOptions options, int dx, int dy,
                            Compositor groupType,
                            List<AttributeNode> attributes,
@@ -103,6 +107,10 @@ final class CompositeBody extends SvgPage {
         return hasAttributes;
     }
 
+    boolean hasGroup() {
+        return groupType != null;
+    }
+
     /** Vertical centre of the attribute tab, honouring the body's y offset. */
     int attributeCenter() {
         return attributeBox.center();
@@ -147,6 +155,9 @@ final class CompositeBody extends SvgPage {
     void draw() {
         if (hasAttributes) {
             attributeBox.draw();
+        }
+        if (!hasGroup()) {
+            return;
         }
         writeChildConnectors();
         groupNode.render(groupX, groupY, groupType);

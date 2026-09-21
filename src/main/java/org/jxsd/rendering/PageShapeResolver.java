@@ -54,10 +54,12 @@ final class PageShapeResolver {
 
     private static PageShape resolveExtension(DiagramNode root, DiagramNode base) {
         List<DiagramNode> baseGroups = contentGroups(base);
-        if (baseGroups.isEmpty()) {
+        if (baseGroups.isEmpty() && base.attributes().isEmpty()) {
             return PageShape.UNSUPPORTED;
         }
-        List<DiagramNode> baseChildren = baseGroups.getLast().children();
+        List<DiagramNode> baseChildren = baseGroups.isEmpty()
+                ? List.of()
+                : baseGroups.getLast().children();
         DiagramNode derivedGroup = lastDirectGroup(root);
         if (hasExpanded(baseChildren)
                 || (derivedGroup != null && hasExpanded(derivedGroup.children()))) {

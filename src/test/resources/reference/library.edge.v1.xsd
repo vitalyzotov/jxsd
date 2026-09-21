@@ -100,6 +100,54 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:complexType name="EmptyBaseType">
+    <xs:annotation>
+      <xs:documentation>A base that contributes neither content nor attributes.</xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="AttrOnlyBaseType">
+    <xs:annotation>
+      <xs:documentation>A base that only contributes an attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="baseAttr" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="AttrOnlyPayloadType">
+    <xs:annotation>
+      <xs:documentation>Content of an extension over an attribute-only base.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="detail" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ExtendsAttrOnlyType">
+    <xs:annotation>
+      <xs:documentation>Extends a base whose only contribution is an attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="edge:AttrOnlyBaseType">
+        <xs:sequence>
+          <xs:element name="payload" type="edge:AttrOnlyPayloadType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExtendsEmptyBaseType">
+    <xs:annotation>
+      <xs:documentation>Extension over a wholly empty base stays unrenderable.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="edge:EmptyBaseType">
+        <xs:sequence>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <xs:complexType name="NestedWithAttrsType">
     <xs:annotation>
       <xs:documentation>A nested group next to attributes cannot be rendered.</xs:documentation>

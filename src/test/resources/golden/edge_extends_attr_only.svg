@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="384" height="164">
+	<clipPath id="cl_2">
+		<rect x="-10" y="-5" width="394" height="169"/>
+	</clipPath>
+	<g clip-path="url(#cl_2)">
+		<rect fill="white" width="394" height="169"/>
+		<rect fill="#FFFFC0" x="148" width="212" height="91"/>
+		<rect fill="none" stroke="gray" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="148" width="211" height="90"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="156" y="20">
+				edge:AttrOnlyBaseType
+		</text>
+		<text fill="gray" font-size="12" font-family="Segoe UI" x="283.96875" y="20">
+				 (extension)
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M139 52L154 52"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M155 52L161 52"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M155 52L155 125"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M155 125L161 125"/>
+		<path fill="white" d="M239 47L239 28L162 28L162 47L162 77L240 77L240 47L239 47Z"/>
+		<rect fill="white" x="182" y="30" width="51" height="16"/>
+		<text font-size="12" font-style="italic" font-family="Segoe UI" x="182" y="43">
+				attributes
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M239 47L239 28L162 28L162 47L162 77L240 77L240 47L239 47Z"/>
+		<rect fill="silver" x="172" y="55" width="64" height="21"/>
+		<rect fill="white" x="168" y="51" width="64" height="21"/>
+		<rect fill="white" x="177" y="53" width="48" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="177" y="66">
+				baseAttr
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="168" y="51" width="63" height="20"/>
+		<rect x="167" y="33" width="11" height="11"/>
+		<rect fill="white" x="168" y="34" width="9" height="9"/>
+		<rect x="169" y="38" width="7" height="1"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M207 125L230 125"/>
+		<path fill="silver" d="M166 124L171 119L196 119L201 124L201 135L196 140L171 140L166 135L166 124Z"/>
+		<path fill="white" d="M162 120L167 115L192 115L197 120L197 131L192 136L167 136L162 131L162 120Z"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M167 125L191 125"/>
+		<rect x="173" y="124" width="3" height="3"/>
+		<rect x="178" y="124" width="3" height="3"/>
+		<rect x="183" y="124" width="3" height="3"/>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M162 120L167 115L191 115L196 120L196 130L191 135L167 135L162 130L162 120Z"/>
+		<rect fill="silver" x="235" y="119" width="96" height="21"/>
+		<rect fill="white" x="231" y="115" width="96" height="21"/>
+		<rect fill="white" x="240" y="117" width="75" height="16"/>
+		<text fill="gray" font-size="12" font-weight="600" font-family="Segoe UI" x="240" y="130">
+				edge:
+		</text>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="270.10547" y="130">
+				payload
+		</text>
+		<rect fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" x="231" y="115" width="95" height="20"/>
+		<rect x="321" y="120" width="11" height="11"/>
+		<rect fill="white" x="322" y="121" width="9" height="9"/>
+		<rect x="323" y="125" width="7" height="1"/>
+		<rect x="326" y="122" width="1" height="7"/>
+		<rect x="196" y="120" width="11" height="11"/>
+		<rect fill="white" x="197" y="121" width="9" height="9"/>
+		<rect x="198" y="125" width="7" height="1"/>
+		<path fill="silver" d="M4 51L9 46L139 46L139 68L9 68L4 63L4 51Z"/>
+		<path fill="white" d="M0 47L5 42L135 42L135 64L5 64L0 59L0 47Z"/>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="79">
+				Extends a base whose only
+		</text>
+		<text fill="gray" font-size="9" font-family="Segoe UI" x="5" y="91">
+				contribution is an attribute.
+		</text>
+		<rect fill="white" x="5" y="44" width="117" height="16"/>
+		<text font-size="12" font-weight="600" font-family="Segoe UI" x="5" y="57">
+				ExtendsAttrOnlyType
+		</text>
+		<path fill="none" stroke="black" stroke-width="1" stroke-linecap="square" stroke-miterlimit="4" transform="translate(0.5 0.5)" d="M0 47L5 42L134 42L134 63L5 63L0 58L0 47Z"/>
+		<rect x="129" y="47" width="11" height="11"/>
+		<rect fill="white" x="130" y="48" width="9" height="9"/>
+		<rect x="131" y="52" width="7" height="1"/>
+	</g>
+</svg>

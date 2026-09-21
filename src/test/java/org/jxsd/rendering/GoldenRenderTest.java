@@ -82,6 +82,10 @@ class GoldenRenderTest {
             new Scenario("library.edge.v1.xsd", "FixedOccurrenceType", EDGE, 1, true, "", "edge_fixed_occurrence.svg"),
             new Scenario("library.edge.v1.xsd", "InheritedType", EDGE, 1, true, "", "edge_inherited_type.svg"),
             new Scenario("library.edge.v1.xsd", "Inherited", EDGE, 1, true, "", "edge_inherited_element.svg"),
+            new Scenario("library.edge.v1.xsd", "ExtendsAttrOnlyType", EDGE, 1, true, "",
+                    "edge_extends_attr_only.svg"),
+            new Scenario("library.edge.v1.xsd", "ExtendsAttrOnlyType", EDGE, 2, true, "",
+                    "edge_extends_attr_only_e2.svg"),
             new Scenario("library.edge.v1.xsd", "RestrictedType", EDGE, 1, true, "", "edge_restricted.svg"),
             new Scenario("library.edge.v1.xsd", "RestrictionContentType", EDGE, 1, true, "",
                     "edge_restricted_content.svg"),
@@ -118,6 +122,8 @@ class GoldenRenderTest {
         assertNotNull(render("library.core.v1.xsd", "MeasureType", LIB, 1));
         // A type mixing a nested group with attributes has no page shape.
         assertNull(render("library.edge.v1.xsd", "NestedWithAttrsType", EDGE, 1));
+        // An extension whose base contributes nothing still has no page shape.
+        assertNull(render("library.edge.v1.xsd", "ExtendsEmptyBaseType", EDGE, 1));
         // An element with simple content only is a valid simple page, not a null.
         assertNotNull(render("library.core.v1.xsd", "Comment", LIB, 1));
     }
