@@ -21,6 +21,8 @@ class CliCornerCaseTest {
 
     private static final String LIBRARY = "src/test/resources/reference/library.core.v1.xsd";
     private static final String EDGE = "src/test/resources/reference/library.edge.v1.xsd";
+    private static final String DOCTYPE_FIXTURE =
+            "src/test/resources/reference/insecure-doctype.core.v1.xsd";
     private static final String MISSING = "src/test/resources/reference/missing-dependency.core.v1.xsd";
     private static final String MISSING_MULTIPLE =
             "src/test/resources/reference/missing-multiple.core.v1.xsd";
@@ -219,6 +221,21 @@ class CliCornerCaseTest {
     void expandingBeyondTheTreeDepthStillRenders() {
         Run run = run("-s", "-r", "Comment", "-e", "5", LIBRARY);
         assertEquals(0, run.code(), run.err());
+        assertTrue(run.out().startsWith("<?xml"), run.out());
+    }
+
+    @Test
+    void doctypeIsRejectedByDefault() {
+        Run run = run("-s", "-r", "Standalone", DOCTYPE_FIXTURE);
+        assertEquals(1, run.code());
+        assertTrue(run.err().contains("DOCTYPE"), run.err());
+    }
+
+    @Test
+    void insecureAllowsDoctypeAndIsWarnedAbout() {
+        Run run = run("-s", "--insecure", "-r", "Standalone", DOCTYPE_FIXTURE);
+        assertEquals(0, run.code(), run.err());
+        assertTrue(run.err().contains("--insecure"), run.err());
         assertTrue(run.out().startsWith("<?xml"), run.out());
     }
 

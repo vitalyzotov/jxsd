@@ -126,6 +126,12 @@ class CliOptionsTest {
     }
 
     @Test
+    void insecureOption() {
+        assertTrue(parse("-o", "out.svg", "-r", "A", "--insecure", "in.xsd").insecure);
+        assertFalse(parse("-o", "out.svg", "-r", "A", "in.xsd").insecure);
+    }
+
+    @Test
     void credentials() {
         CliOptions options = parse("-o", "out.svg", "-r", "A", "-u", "bob", "-p", "secret", "in.xsd");
         assertEquals("bob", options.username);

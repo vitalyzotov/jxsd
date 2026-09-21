@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic fixture carrying a DOCTYPE: refused by default (XXE hardening)
+     and accepted only with the insecure flag. The entity is never referenced. -->
+<!DOCTYPE xs:schema [
+  <!ENTITY unused SYSTEM "http://example.invalid/xxe">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:sec="http://example.org/insecure/v1/"
+           targetNamespace="http://example.org/insecure/v1/"
+           elementFormDefault="qualified">
+
+  <xs:element name="Standalone" type="xs:string"/>
+</xs:schema>

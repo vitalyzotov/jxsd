@@ -1,5 +1,6 @@
 package org.jxsd.parsing;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,6 +36,7 @@ public final class Schema {
     private XmlSchemaCollection collection = new XmlSchemaCollection();
     private String username;
     private String password;
+    private boolean insecure;
 
     public Schema() {
     }
@@ -48,18 +50,33 @@ public final class Schema {
         this.password = password;
     }
 
+    /** {@code --insecure}: allow plain HTTP and DTD/external entities. */
+    public void setInsecure(boolean insecure) {
+        this.insecure = insecure;
+    }
+
     /** Loads a schema and discards the reported errors. */
     public void load(String fileName) {
-        load(fileName, message -> { });
+        load(fileName, message -> { }, message -> { });
     }
 
     /**
-     * Loads a schema, reporting missing files, unresolvable dependencies and
-     * parse failures to {@code onError} without aborting the render.
+     * Loads a schema and reports errors to {@code onError}, discarding warnings.
      */
     public void load(String fileName, Consumer<String> onError) {
+        load(fileName, onError, message -> { });
+    }
+
+    /**
+     * Loads a schema, reporting errors to {@code onError} and policy warnings to
+     * {@code onWarning}, without aborting the render. Missing files,
+     * unresolvable dependencies, parse failures and content rejected by the
+     * security policy are all reported this way.
+     */
+    public void load(String fileName, Consumer<String> onError, Consumer<String> onWarning) {
         cleanup();
-        SchemaDependencyResolver resolver = new SchemaDependencyResolver(onError);
+        SchemaDependencyResolver resolver =
+                new SchemaDependencyResolver(onError, onWarning, insecure);
         resolver.setCredentials(username, password);
 
         String location = fileName.trim();
@@ -70,15 +87,30 @@ public final class Schema {
                 return;
             }
         } else {
-            Path path = Paths.get(location).toAbsolutePath().normalize();
-            if (!Files.exists(path)) {
-                onError.accept("Schema not found: " + path);
+            source = localSource(resolver, location, onError);
+            if (source == null) {
                 return;
             }
-            source = new InputSource(path.toUri().toString());
         }
 
         readSchema(source, resolver, onError);
+    }
+
+    private static InputSource localSource(SchemaDependencyResolver resolver, String location,
+                                           Consumer<String> onError) {
+        Path path = Paths.get(location).toAbsolutePath().normalize();
+        if (!Files.exists(path)) {
+            onError.accept("Schema not found: " + path);
+            return null;
+        }
+        byte[] bytes;
+        try {
+            bytes = Files.readAllBytes(path);
+        } catch (IOException ex) {
+            onError.accept("Cannot read schema '" + path + "': " + ex.getMessage());
+            return null;
+        }
+        return resolver.sanitize(bytes, path.toUri().toString());
     }
 
     private void cleanup() {

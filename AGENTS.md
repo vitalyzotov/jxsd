@@ -110,6 +110,10 @@ Pipeline: `Schema.load` -> `Diagram.addRoot` / `expand` -> `PageRenderer`
   `SchemaReader` parses a source and collects the top-level `SchemaComponent`s (each typed
   by a `ComponentKind`), and
   `SchemaDependencyResolver` is the custom `URIResolver` for http/auth/missing dependencies.
+  Every input (the root document and each dependency) is materialised and checked by
+  `ExternalContentPolicy`: a DOCTYPE is refused by default (XXE/SSRF hardening) and plain
+  HTTP is refused when credentials are configured (the Basic-auth header would travel
+  unencrypted). `--insecure` opts out of both.
   `AttributeEnumerator` enumerates attributes (base types + attribute groups) and
   `AnnotationText` extracts `xml:lang` documentation.
 - `model/`: `Diagram` is the builder/session holding the options, the `Schema` and the root
@@ -202,3 +206,7 @@ Pipeline: `Schema.load` -> `Diagram.addRoot` / `expand` -> `PageRenderer`
   newline is stripped) or the `JXSD_USERNAME`/`JXSD_PASSWORD` environment variables, with the
   command line winning; `-p` together with `--password-file` is rejected and a password without
   a username is ignored with a warning.
+- `--insecure` disables the external-content policy for trusted legacy sources: it allows
+  plain-HTTP dependencies (also with credentials) and DTD/external-entity processing. It is
+  off by default and prints a stderr warning when used; secure processing (expansion limits)
+  stays enabled.

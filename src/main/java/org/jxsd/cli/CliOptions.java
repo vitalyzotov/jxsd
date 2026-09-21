@@ -99,6 +99,11 @@ public final class CliOptions {
             description = "read the dependency password from FILE (alternative to -p).")
     public String passwordFile;
 
+    @Option(names = {"--insecure"},
+            description = "allow plain-HTTP dependencies and DTD/external-entity processing "
+                    + "(trusted legacy sources only).")
+    public boolean insecure;
+
     @Parameters(index = "0", arity = "1", paramLabel = "FILE",
             description = "the XSD file or URL to render.")
     public String inputFile;

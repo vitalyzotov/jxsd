@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic fixture importing over plain HTTP: refused when credentials are
+     configured (the Basic-auth header would travel unencrypted), allowed with
+     the insecure flag. The blocked dependency is never fetched. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:sec="http://example.org/insecure-http/v1/"
+           targetNamespace="http://example.org/insecure-http/v1/"
+           elementFormDefault="qualified">
+
+  <xs:include schemaLocation="http://example.invalid/remote.core.v1.xsd"/>
+
+  <xs:element name="Standalone" type="xs:string"/>
+</xs:schema>

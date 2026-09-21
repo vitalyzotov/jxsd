@@ -88,11 +88,17 @@ final class CliRunner {
 
         io.info("Loading " + options.inputFile());
 
+        if (options.insecure) {
+            io.warn("--insecure: plain-HTTP dependencies and DTD/external entities are enabled; "
+                    + "only use it with trusted sources.");
+        }
+
         Schema schema = new Schema();
+        schema.setInsecure(options.insecure);
         if (credentials.username() != null && !credentials.username().isEmpty()) {
             schema.setCredentials(credentials.username(), credentials.password());
         }
-        schema.load(options.inputFile(), io::error);
+        schema.load(options.inputFile(), io::error, io::warn);
 
         Diagram diagram = new Diagram();
         diagram.setShowDocumentation(options.showDocumentation);

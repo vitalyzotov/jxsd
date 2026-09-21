@@ -35,6 +35,10 @@ class SchemaLoadTest {
 
     private static final String LIBRARY = "src/test/resources/reference/library.core.v1.xsd";
     private static final String EDGE_LIBRARY = "src/test/resources/reference/library.edge.v1.xsd";
+    private static final String DOCTYPE_FIXTURE =
+            "src/test/resources/reference/insecure-doctype.core.v1.xsd";
+    private static final String HTTP_FIXTURE =
+            "src/test/resources/reference/insecure-http.core.v1.xsd";
     private static final String LIB = "http://example.org/library/v1/";
     private static final String EDGE = "http://example.org/edge/v1/";
     private static final String SHARED = "http://example.org/shared/v1/";
@@ -217,6 +221,35 @@ class SchemaLoadTest {
     @Test
     void negativeExpandLevelIsRejected() {
         assertThrows(IllegalArgumentException.class, () -> new Diagram().expand(-1));
+    }
+
+    @Test
+    void doctypeIsRefusedUnlessInsecure() {
+        Schema strict = new Schema();
+        List<String> strictErrors = new ArrayList<>();
+        strict.load(DOCTYPE_FIXTURE, strictErrors::add);
+        assertTrue(strictErrors.stream().anyMatch(error -> error.contains("DOCTYPE")),
+                strictErrors.toString());
+        assertTrue(strict.getElements().isEmpty(), "the document is not parsed");
+
+        Schema insecure = new Schema();
+        insecure.setInsecure(true);
+        List<String> insecureErrors = new ArrayList<>();
+        insecure.load(DOCTYPE_FIXTURE, insecureErrors::add);
+        assertTrue(insecureErrors.isEmpty(), insecureErrors.toString());
+        assertTrue(contains(insecure.getElements(), ComponentKind.ELEMENT, "Standalone"));
+    }
+
+    @Test
+    void plainHttpWithCredentialsIsRefused() {
+        Schema schema = new Schema();
+        schema.setCredentials("bob", "secret");
+        List<String> errors = new ArrayList<>();
+        schema.load(HTTP_FIXTURE, errors::add);
+
+        assertTrue(errors.stream().anyMatch(error -> error.contains("plain-HTTP")),
+                errors.toString());
+        assertTrue(contains(schema.getElements(), ComponentKind.ELEMENT, "Standalone"));
     }
 
     private static DiagramNode expand(String typeName) {
