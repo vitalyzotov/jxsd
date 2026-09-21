@@ -16,7 +16,37 @@ The rendered pages follow the visual conventions of Altova XMLSpy.
 - Deterministic, font-independent layout
 - SVG output plus PNG export rasterized with Apache Batik
 
+## Download
+
+Prebuilt distributions are attached to every
+[GitHub release](https://github.com/vitalyzotov/jxsd/releases):
+
+| Artifact | Needs Java | Contents |
+| --- | --- | --- |
+| `jxsd-<version>-linux-x64.tar.gz` | no | self-contained Linux x64 image |
+| `jxsd-<version>-windows-x64.zip` | no | self-contained Windows x64 image |
+| `jxsd-<version>-bin.tar.gz` | Java 21+ | shaded jar plus executable `bin/jxsd` (Linux/macOS) |
+| `jxsd-<version>-bin.zip` | Java 21+ | shaded jar plus `bin\jxsd.bat` (Windows) |
+| `jxsd-<version>.jar` | Java 21+ | plain shaded jar |
+| `SHA256SUMS` | — | checksums of all of the above |
+
+Unpack and run the launcher — the self-contained images ship their own runtime,
+so no Java or Maven installation is required:
+
+```sh
+tar xzf jxsd-1.0.0-linux-x64.tar.gz
+./jxsd/bin/jxsd -o book.svg -r Book -e 2 input.xsd
+```
+
+On Windows the self-contained image is `jxsd\jxsd.exe`. In the `-bin` archives
+use `bin/jxsd` on Linux/macOS and `bin\jxsd.bat` on Windows; the zip cannot carry
+the Unix executable bit, so on Linux/macOS prefer the `.tar.gz` (or
+`chmod +x bin/jxsd`). Set `JXSD_OPTS` to pass extra JVM options (for example
+`JXSD_OPTS=-Xmx512m`).
+
 ## Requirements
+
+Only needed to build from source or to run the plain jar / `-bin` archive:
 
 - Java 21 or newer
 - Maven 3.8 or newer
@@ -27,14 +57,15 @@ The rendered pages follow the visual conventions of Altova XMLSpy.
 mvn package
 ```
 
-Produces the shaded CLI jar `target/jxsd-*.jar`. The full quality gate is
-`mvn verify`, which runs the test suite plus Checkstyle, SpotBugs and the JaCoCo
-coverage check (≥ 80 % line coverage).
+Produces the shaded CLI jar `target/jxsd-<version>.jar` and the `-bin`
+distribution archives. The full quality gate is `mvn verify`, which runs the
+test suite plus Checkstyle, SpotBugs and the JaCoCo coverage check
+(≥ 80 % line coverage).
 
 ## Usage
 
 ```sh
-java -jar target/jxsd-*.jar -o out.svg -r Book -e 2 input.xsd
+java -jar target/jxsd-<version>.jar -o out.svg -r Book -e 2 input.xsd
 ```
 
 The `-h` flag prints the full generated help; the essentials:
@@ -59,7 +90,7 @@ The `-h` flag prints the full generated help; the essentials:
 Ready-made example schemas live under `src/test/resources/reference/`:
 
 ```sh
-java -jar target/jxsd-*.jar -o book.svg -r Book -e 2 \
+java -jar target/jxsd-<version>.jar -o book.svg -r Book -e 2 \
   src/test/resources/reference/library.core.v1.xsd
 ```
 

@@ -15,7 +15,7 @@ tools/xmlspy/out/ before running.
 
 Usage:
     tools/xmlspy/compare.py [--xmlspy-dir tools/xmlspy/out]
-                            [--jar target/jxsd-1.0-SNAPSHOT.jar]
+                            [--jar target/jxsd-<version>.jar]
                             [--report tools/xmlspy/report]
 """
 from __future__ import annotations
@@ -32,6 +32,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
+
+
+def default_jar() -> Path:
+    candidates = sorted(
+        (p for p in (ROOT / "target").glob("jxsd-*.jar") if not p.name.startswith("original-")),
+        key=lambda p: p.stat().st_mtime,
+        reverse=True,
+    )
+    return candidates[0] if candidates else ROOT / "target/jxsd.jar"
 
 
 def local(tag: str) -> str:
@@ -158,7 +167,7 @@ def main() -> int:
     parser.add_argument("--main", type=Path, default=HERE / "xmlspy.conformance.v1.xsd")
     parser.add_argument("--shared", type=Path, default=HERE / "xmlspy.shared.v1.xsd")
     parser.add_argument("--xmlspy-dir", type=Path, default=HERE / "out")
-    parser.add_argument("--jar", type=Path, default=ROOT / "target/jxsd-1.0-SNAPSHOT.jar")
+    parser.add_argument("--jar", type=Path, default=default_jar())
     parser.add_argument("--report", type=Path, default=HERE / "report")
     args = parser.parse_args()
 

@@ -16,7 +16,7 @@ layout work follows those snapshots rather than any external source.
 
 - Full suite: `mvn test` (offline works: `mvn -o test` after the dependencies are cached)
 - Single test: `mvn -Dtest=GoldenRenderTest test`
-- Shaded CLI jar: `mvn package` -> `target/jxsd-1.0-SNAPSHOT.jar` (main `org.jxsd.cli.Main`)
+- Shaded CLI jar: `mvn package` -> `target/jxsd-<version>.jar` (main `org.jxsd.cli.Main`)
 - Compiler release is 21; a newer JDK (e.g. 25) is fine.
 - Runtime deps: picocli, Apache XmlSchema 2 (`org.apache.ws.xmlschema:xmlschema-core`),
   which parses XSD and resolves includes/imports, and Apache Batik
@@ -28,6 +28,39 @@ layout work follows those snapshots rather than any external source.
   violations required), SpotBugs (`config/spotbugs/exclude.xml`) and the JaCoCo coverage
   gate (>= 80% line coverage of the whole bundle; report at `target/site/jacoco/index.html`).
   Use online Maven at least once so those plugins and the enforcer are cached.
+
+## Distribution & releases
+
+- The version is Maven CI-friendly: `<version>${revision}</version>` with
+  `<revision>1.0-SNAPSHOT</revision>`; a release passes `-Drevision=<x.y.z>` and never edits the
+  pom. The shade `ManifestResourceTransformer` writes `Implementation-Title`/`Implementation-Version`,
+  which `CliOptions.Version` reads for `-V` (main manifest attributes are inherited by packages, so
+  the shaded jar prints the real version; the dev classpath falls back to `dev`).
+- `mvn package` also builds the fat-jar bundle via `maven-assembly-plugin` +
+  `src/assembly/dist.xml`: `target/jxsd-<version>-bin.{tar.gz,zip}` (base dir
+  `jxsd-<version>/`) with `lib/jxsd.jar`, the `packaging/bin/jxsd` (POSIX) and
+  `packaging/bin/jxsd.bat` launchers, and `README.md`/`LICENSE`/`NOTICE`. The launchers resolve the
+  jar relative to themselves and honor `JXSD_OPTS`. Keep the plugin defaults (`appendAssemblyId=true`,
+  no explicit `finalName`): the archives then attach with classifier `bin` while the shaded jar stays
+  the main artifact. Setting `appendAssemblyId=false` without a classifier makes the *archive* the
+  main artifact, so `install`/`deploy` would publish a `.tar.gz` under the project coordinates.
+  The assembly plugin needs one online run to cache. `.gitattributes` pins `jxsd` to LF and
+  `jxsd.bat` to CRLF so the Windows batch file survives the Linux-built zip, and marks
+  `src/test/resources/golden/**` and `src/main/resources/metrics/*.txt` as `-text` so a Windows
+  checkout never rewrites the byte-exact snapshots/metrics with CRLF.
+- `.github/workflows/release.yml` runs on `v*` tags and CI (`ci.yml`) deliberately ignores tags.
+  The `dist` job runs `mvn verify` (tests + Checkstyle + SpotBugs + JaCoCo) and uploads the jar and
+  `-bin` archives; the `native` matrix (ubuntu/windows) builds a `jpackage --type app-image` with a
+  trimmed `jlink` runtime (`--no-header-files --no-man-pages --strip-debug --compress=zip-6`) and
+  `--win-console` on Windows, then smoke-renders an SVG (dist) and a PNG (image) before archiving.
+  Modules come from `jdeps --print-module-deps` filtered of its `Warning:` lines, unioned with
+  `java.base,java.desktop,java.xml,java.naming,java.logging,jdk.unsupported,jdk.crypto.ec`.
+  The native job builds only the shade (`-Dassembly.skipAssembly=true`); a tag suffix (`v1.0.0-rc1`)
+  keeps the full artifact version but feeds `jpackage` the numeric `APP_VERSION`. Untrusted ref names
+  reach the shell through step `env:` variables, never `${{ }}` interpolation. The `release` job
+  downloads everything, writes `SHA256SUMS`, upserts the release (pre-release when the tag has a
+  suffix) and uses `gh release upload --clobber` when it already exists. jpackage cannot
+  cross-compile, so Windows is built on the Windows runner.
 
 ## Text measurement (pure Java)
 

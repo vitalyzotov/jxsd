@@ -1,0 +1,8 @@
+* text=auto
+
+# Byte-exact fixtures: never normalize their line endings.
+src/test/resources/golden/** -text
+src/main/resources/metrics/*.txt -text
+
+packaging/bin/jxsd text eol=lf
+packaging/bin/jxsd.bat text eol=crlf

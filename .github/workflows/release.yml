@@ -1,0 +1,193 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  dist:
+    name: fat-jar distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Resolve version from tag
+        id: version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          echo "value=${TAG#v}" >> "$GITHUB_OUTPUT"
+      - name: Build, test and verify
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+        run: mvn --batch-mode --no-transfer-progress verify -Drevision="$VERSION"
+      - name: Smoke-test the CLI
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+        run: |
+          set -euo pipefail
+          java -jar "target/jxsd-${VERSION}.jar" --version
+          java -jar "target/jxsd-${VERSION}.jar" \
+            -o target/smoke.svg -r Book -e 2 src/test/resources/reference/library.core.v1.xsd
+          test -s target/smoke.svg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          if-no-files-found: error
+          path: |
+            target/jxsd-${{ steps.version.outputs.value }}.jar
+            target/jxsd-${{ steps.version.outputs.value }}-bin.tar.gz
+            target/jxsd-${{ steps.version.outputs.value }}-bin.zip
+
+  native:
+    name: self-contained image (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: linux-x64
+            extra: ''
+          - os: windows-latest
+            platform: windows-x64
+            extra: '--win-console'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Resolve version from tag
+        id: version
+        shell: bash
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          raw="${TAG#v}"
+          base="${raw%%-*}"
+          case "$base" in
+            *.*.*) app="$base" ;;
+            *.*) app="$base.0" ;;
+            *) app="$base.0.0" ;;
+          esac
+          echo "value=$raw" >> "$GITHUB_OUTPUT"
+          echo "app=$app" >> "$GITHUB_OUTPUT"
+      - name: Build shaded jar
+        shell: bash
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+        run: mvn --batch-mode --no-transfer-progress package -DskipTests -Dassembly.skipAssembly=true -Drevision="$VERSION"
+      - name: Build self-contained image
+        shell: bash
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+          APP_VERSION: ${{ steps.version.outputs.app }}
+          EXTRA: ${{ matrix.extra }}
+        run: |
+          set -euo pipefail
+          mkdir -p target/jpackage-input
+          cp "target/jxsd-${VERSION}.jar" target/jpackage-input/jxsd.jar
+          detected=$(jdeps --ignore-missing-deps --print-module-deps target/jpackage-input/jxsd.jar 2>/dev/null \
+            | sed '/^Warning:/d' | tr ',' '\n')
+          mods=$(printf '%s\n' java.base java.desktop java.xml java.naming java.logging jdk.unsupported jdk.crypto.ec $detected \
+            | sort -u | paste -sd, -)
+          jpackage --type app-image \
+            --name jxsd \
+            --app-version "$APP_VERSION" \
+            --input target/jpackage-input \
+            --main-jar jxsd.jar \
+            --main-class org.jxsd.cli.Main \
+            --add-modules "$mods" \
+            --java-options "-Djava.awt.headless=true" \
+            --jlink-options "--no-header-files --no-man-pages --strip-debug --compress=zip-6" \
+            --dest target/jpackage \
+            ${EXTRA:+$EXTRA}
+          echo "modules=$mods"
+      - name: Smoke-test the image
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -x target/jpackage/jxsd/bin/jxsd ]; then
+            launcher=target/jpackage/jxsd/bin/jxsd
+          else
+            launcher=target/jpackage/jxsd/jxsd.exe
+          fi
+          "$launcher" --version
+          "$launcher" -o target/smoke.png -r Book -e 2 src/test/resources/reference/library.core.v1.xsd
+          test -s target/smoke.png
+      - name: Archive image
+        shell: bash
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+          PLATFORM: ${{ matrix.platform }}
+        run: |
+          set -euo pipefail
+          if [ "$PLATFORM" = "windows-x64" ]; then
+            powershell -NoProfile -Command \
+              "Compress-Archive -Path 'target/jpackage/jxsd' -DestinationPath 'target/jxsd-${VERSION}-${PLATFORM}.zip'"
+          else
+            tar -C target/jpackage -czf "target/jxsd-${VERSION}-${PLATFORM}.tar.gz" jxsd
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-${{ matrix.platform }}
+          if-no-files-found: error
+          path: target/jxsd-${{ steps.version.outputs.value }}-${{ matrix.platform }}.*
+
+  release:
+    name: publish GitHub release
+    needs: [dist, native]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve version from tag
+        id: version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          VERSION="${TAG#v}"
+          echo "value=$VERSION" >> "$GITHUB_OUTPUT"
+          if [[ "$VERSION" == *-* ]]; then
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Generate checksums
+        working-directory: dist
+        run: find . -maxdepth 1 -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+          VERSION: ${{ steps.version.outputs.value }}
+          PRERELEASE: ${{ steps.version.outputs.prerelease }}
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" --clobber dist/*
+          else
+            args=(--title "jxsd $VERSION" --generate-notes)
+            if [ "$PRERELEASE" = "true" ]; then
+              args+=(--prerelease)
+            fi
+            gh release create "$TAG" "${args[@]}" dist/*
+          fi
